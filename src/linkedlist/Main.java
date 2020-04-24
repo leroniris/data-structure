@@ -3,6 +3,7 @@ package linkedlist;
 import linkedlist.circledoublelist.DoubleCircleLinkedList;
 import linkedlist.circlesinglelist.SingleCircleLinkedList;
 import linkedlist.doublelist.DoubleLinkedList;
+import linkedlist.josephus.JosephusDoubleCircleLinkedList;
 import utils.Asserts;
 
 /**
@@ -35,6 +36,23 @@ public class Main {
         System.out.println(list);
     }
 
+    static void josephus() {
+        JosephusDoubleCircleLinkedList<Integer> list = new JosephusDoubleCircleLinkedList<>();
+        for (int i = 1; i <= 8; i++) {
+            list.add(i);
+        }
+
+        // 指向头结点（指向1）
+        list.reset();
+
+        while (list.size != 1) {
+            list.next();
+            list.next();
+            System.out.println(list.remove());
+        }
+        System.out.println("我是最强的仔，活到最后：" + list);
+    }
+
     public static void main(String[] args) {
 
 
@@ -50,10 +68,13 @@ public class Main {
 //        System.out.println(arrayList);
 
 
-        testList(new ArrayList<>());
-        testList(new DoubleLinkedList<>());
+//        testList(new ArrayList<>());
+//        testList(new DoubleLinkedList<>());
+//
+//        testList(new SingleCircleLinkedList<>());
+//        testList(new DoubleCircleLinkedList<>());
 
-        testList(new SingleCircleLinkedList<>());
-        testList(new DoubleCircleLinkedList<>());
+        // 解决约瑟夫问题
+        josephus();
     }
 }
